@@ -4,9 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const Home = () => <h1><a href="/about">Click Me</a></h1>
-const About = () => <h1>About Us</h1>
-
 
 ReactDOM.render(
   <React.StrictMode>

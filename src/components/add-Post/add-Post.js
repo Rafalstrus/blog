@@ -2,13 +2,12 @@
 
 function AddPost() {
     return (
-      <div className="App">
-          <p>working</p>
-        {console.log('bb')}
-        <button>cc</button>
-      </div>
+        <div className="App">
+            <p>working</p>
+            {console.log('bb')}
+            <button>cc</button>
+        </div>
     );
-  }
-  
-  export default AddPost;
-  
+}
+
+export default AddPost;

@@ -2,13 +2,12 @@
 
 function Main() {
     return (
-      <div className="App">
-          <p>works</p>
-        {console.log('bb')}
-        <button>bb</button>
-      </div>
+        <div className="App">
+            <p>works</p>
+            {console.log('bb')}
+            <button>bb</button>
+        </div>
     );
-  }
-  
-  export default Main;
-  
+}
+
+export default Main;
