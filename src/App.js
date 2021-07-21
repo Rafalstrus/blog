@@ -4,6 +4,7 @@ import { Navigation } from './components/nav/nav.component'
 import Login from './components/login/login'
 import Main from './components/main/main'
 import AddPost from './components/add-Post/add-Post';
+import Register from './components/register/register';
 
 
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
@@ -17,6 +18,9 @@ function App() {
       <Routes>
     <Route exact path = "/login">
     <Login />
+    </Route>
+    <Route exact path = "/register">
+    <Register />
     </Route>
     <Route exact path = "/add-post">
     <AddPost />
