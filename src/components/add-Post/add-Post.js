@@ -7,7 +7,7 @@ const cookies = new Cookies();
 function AddPost() {
     const [authToken, setAuthToken] = useState(cookies.get("token"))
     return (
-        <div className="App">
+        <div className="Add-Post">
             <p>working</p>
             <input id="post-text"></input>
             <button onClick= {() => {

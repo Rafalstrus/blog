@@ -2,7 +2,7 @@
 
 function Main() {
     return (
-        <div className="App">
+        <div className="Main">
             <p>works</p>
             {console.log('bb')}
             <button>bb</button>

@@ -11,6 +11,7 @@ import Register from './components/register/register';
 
 function App() {
   return (
+    <div className="App">
     <Router>
       <Navigation /> {
       // Navigation component is here, because i want to get data inside only one time
@@ -30,6 +31,7 @@ function App() {
     </Route>
       </Routes>
     </Router>
+    </div>
   );
 }
 

@@ -14,7 +14,7 @@ function Login() {
   const [authToken, setAuthToken] = useState("")
 
   return (
-    <div className="App">
+    <div className="Login">
       <input onChange={(e) => {
         setUsername(e.target.value)
       }}></input>
