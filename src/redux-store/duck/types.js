@@ -1,9 +1,9 @@
-const GET_TOKEN = 'GET_TOKEN'
-const SEND_TOKEN = 'SEND_TOKEN'
+const SET_TOKEN = 'SET_TOKEN'
+const SET_POSTS = 'SET_POSTS'
 
 const exportedObject = {
-    GET_TOKEN,
-    SEND_TOKEN,
+    SET_TOKEN,
+    SET_POSTS,
 };
 
 export default exportedObject

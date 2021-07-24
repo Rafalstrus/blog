@@ -5,18 +5,18 @@ const cookies = new Cookies();
 
 const INITIAL_STATE = {
   token: cookies.get("token"),
-  list: []
+  posts: []
 }
 
 const storeReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.GET_TOKEN:
+    case types.SET_TOKEN:
       return {
-        ...state, token: cookies.get("token")
+        ...state, token: action.token
       }
-    case types.SEND_TOKEN:
+    case types.SET_POSTS:
       return {
-        ...state, list: []
+        ...state, posts: [action.posts]
       }
     default:
       return state

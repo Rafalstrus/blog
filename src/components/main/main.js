@@ -1,13 +1,20 @@
-//https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
+import { connect } from 'react-redux'
+import actions from '../../redux-store/duck/actions'
 
-function Main() {
+function Main({setPosts}) {
     return (
         <div className="Main">
             <p>works</p>
             {console.log('bb')}
-            <button>bb</button>
+            <button onClick={() => {
+                setPosts("a")
+            }}>bb</button>
         </div>
     );
 }
 
-export default Main;
+const mapDispatchToProps = dispatch => ({
+    setPosts: (post) => dispatch(actions.setPosts(post))
+  })
+
+export default connect(null, mapDispatchToProps)(Main);

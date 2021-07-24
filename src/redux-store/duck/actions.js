@@ -1,16 +1,16 @@
 import types from './types'
 
-const get = item => ({
-  type: types.GET_TOKEN, item
+const setToken = item => ({
+  type: types.SET_TOKEN, item
 })
 
-const send = item => ({
-  type: types.SEND_TOKEN, item
+const setPosts = item => ({
+  type: types.SET_POSTS, item
 })
 
 const exportedObject = {
-    get,
-    send,
+    setToken,
+    setPosts,
 };
 
 export default exportedObject

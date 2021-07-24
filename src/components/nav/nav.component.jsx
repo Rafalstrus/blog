@@ -2,10 +2,17 @@ import React from 'react';
 import './nav.styles.css'
 import { Link } from "react-router-dom"
 
-export const Navigation = props => (
+import store from '../../store.js';
+
+export const Navigation = props => {
+    const state = store.getState();
+    const authToken = state.token;
+    //here add if authToken is not null render login/register, ese render logout
+    return(
     <div id='nav-container'>
         <div id="nav-wrapper">
-            <div>
+          { (authToken==="")? 
+          <div>
         <Link
             to="/login"
             id="goToLogin"
@@ -17,6 +24,8 @@ export const Navigation = props => (
             className="nav-elements"
         >Register</Link>
         </div>
+        : 
+        <p>LOGOUT</p>}
         <Link
             to="/"
             id="goToMain"
@@ -30,4 +39,5 @@ export const Navigation = props => (
         {console.log('%c Oh my heavens! ', 'background: #222; color: #bada55;cursor: pointer;')}
         </div>
     </div>
-)
+    )
+}

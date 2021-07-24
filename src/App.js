@@ -7,7 +7,7 @@ import AddPost from './components/add-Post/add-Post';
 import Register from './components/register/register';
 
 
-//https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
+//in redux-store add action to get cookie value from outside (login)
 
 function App() {
   return (

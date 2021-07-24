@@ -1,14 +1,14 @@
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
-import React, { useState  } from 'react';
+import React from 'react';
 import Cookies from 'universal-cookie';
 
-import { connect } from 'react-redux'
-import { getToken } from '../../redux-store/duck/operations.js'
+import store from '../../store.js';
 
 const cookies = new Cookies();
 
 function AddPost() {
-    const [authToken, setAuthToken] = useState(cookies.get("token"))
+    const state = store.getState();
+    const authToken = state.token;
     return (
         <div className="Add-Post">
             <p>working</p>
@@ -32,3 +32,4 @@ async function sendPostToApi(authToken) {
     .then((response) =>(response.json()))
   }
 export default AddPost;
+
