@@ -60,3 +60,9 @@ button {
 button:active{
   background:linear-gradient(#bd7171, #626bc7);
 }
+input:invalid {
+  background-color: red;
+}
+input:invalid:focus {
+  background-image: white;
+}

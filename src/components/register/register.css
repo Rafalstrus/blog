@@ -1,0 +1,6 @@
+#error-Box:after {
+    content:"";
+    display:inline-block;
+    width:0px;
+    outline:1px solid red; /* debug, remove me */
+  }

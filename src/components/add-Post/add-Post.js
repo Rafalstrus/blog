@@ -1,6 +1,9 @@
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import Cookies from 'universal-cookie';
+
+import { connect } from 'react-redux'
+import { getToken } from '../../redux-store/duck/operations.js'
 
 const cookies = new Cookies();
 

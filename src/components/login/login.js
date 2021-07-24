@@ -1,5 +1,5 @@
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
-import { useState } from 'react'
+import { useState ,  useRef } from 'react'
 
 var apiServerWeba = "https://blogapibackend.herokuapp.com"
 var apiServerWeb = "http://localhost:9000"
@@ -11,36 +11,45 @@ var apiServerWeb = "http://localhost:9000"
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [authToken, setAuthToken] = useState("")
+  const errorBoxRef = useRef()
 
   return (
     <div className="Login">
+      <h2>LOGIN</h2>
+      <p>Username</p>
       <input onChange={(e) => {
         setUsername(e.target.value)
       }}></input>
+      <p>Password</p>
       <input onChange={(e) => {
         setPassword(e.target.value)
       }}></input>
       <button onClick={() => {
-        auth(username, password,setAuthToken)
+        auth(username, password,errorBoxRef)
       }
       }>send</button>
-      <p>{console.log(authToken)}</p>
+      <p
+        ref={errorBoxRef}
+        />
     </div>
   );
 }
-async function auth(username, password,setAuthToken) {
-  setAuthToken( await fetch(apiServerWeb+`/api-connection/auth-create`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
-    body: JSON.stringify({
-      username: username,
-      password: password,
+async function auth(username, password, errorBoxRef) {
+  if (username.length >= 5 && password.length >= 8) {
+    await fetch(apiServerWeb + `/api-connection/auth-create`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      })
     })
-  })
-  .then((response) => response.json())
-  )
+      .then((response) => response.json())
+  }
+  else {
+    errorBoxRef.current.innerText ="Username And Passwords must contain at least 5/8 letters"
+  }
 }
 /*async function getSession(setAuthKey) {
   return fetch(apiServerWeb+`/api-connection/home`, {
