@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 const INITIAL_STATE = {
-  token: cookies.get("token"),
+  token: cookies.get("token")?cookies.get("token"): "missing",
   posts: []
 }
 

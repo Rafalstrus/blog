@@ -1,5 +1,7 @@
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
 import { useState ,  useRef } from 'react'
+import {connect} from 'react-redux'
+import { makeToken } from '../../redux-store/duck/operations'
 
 var apiServerWeba = "https://blogapibackend.herokuapp.com"
 var apiServerWeb = "http://localhost:9000"
@@ -46,6 +48,8 @@ async function auth(username, password, errorBoxRef) {
       })
     })
       .then((response) => response.json())
+      console.log("aa")
+      makeToken()
   }
   else {
     errorBoxRef.current.innerText ="Username And Passwords must contain at least 5/8 letters"
@@ -59,4 +63,4 @@ async function auth(username, password, errorBoxRef) {
   })
   .then((response) => setAuthKey(response.json()))
 }*/
-export default Login;
+export default connect()(Login);

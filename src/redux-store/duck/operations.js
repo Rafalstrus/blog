@@ -1,6 +1,12 @@
 import actions from './actions'
 
-export const SET_POSTS = () =>
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+
+export const makeToken = () =>
   async (dispatch) => {
-    const x=3
+    const token = cookies.get("token")
+    console.log("aaa")
+     dispatch(actions.setToken(token))
   }
