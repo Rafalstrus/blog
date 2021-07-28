@@ -1,9 +1,12 @@
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
-import { useState ,  useRef } from 'react'
+import { useState ,  useRef, useEffect } from 'react'
 import {connect} from 'react-redux'
 import { makeToken } from '../../redux-store/duck/operations'
 
-var apiServerWeba = "https://blogapibackend.herokuapp.com"
+import JSEncrypt from 'jsencrypt';
+
+
+//var apiServerWeba = "https://blogapibackend.herokuapp.com"
 var apiServerWeb = "http://localhost:9000"
 //zrezygnuj z sesji, zachowuj id ciastka, klucz bezpieczenstwa i dane niech beda w bazie danych
 // najpierw sprobuj to https://cloud.google.com/nodejs/getting-started/session-handling-with-firestore
@@ -13,8 +16,20 @@ var apiServerWeb = "http://localhost:9000"
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [publicKey, setPublicKey] = useState("")
   const errorBoxRef = useRef()
 
+  useEffect( ()=>{
+    async function fetchData(){
+    var x =await fetch('http://localhost:9000/api-connection/public-key-get')
+    return x.text()
+  }
+  async function getData(){
+    setPublicKey(await fetchData())
+  }
+  getData()
+  },[])
+  console.log(publicKey)
   return (
     <div className="Login">
       <h2>LOGIN</h2>
@@ -27,7 +42,7 @@ function Login() {
         setPassword(e.target.value)
       }}></input>
       <button onClick={() => {
-        auth(username, password,errorBoxRef)
+        auth(username, password,errorBoxRef,publicKey)
       }
       }>send</button>
       <p
@@ -36,15 +51,17 @@ function Login() {
     </div>
   );
 }
-async function auth(username, password, errorBoxRef) {
+async function auth(username, password, errorBoxRef,publicKey) {
+  var enryptedUsername = encrypt(username,publicKey)
+  var enryptedPassword = encrypt(password,publicKey)
   if (username.length >= 5 && password.length >= 8) {
     await fetch(apiServerWeb + `/api-connection/auth-create`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        username: username,
-        password: password,
+        username: enryptedUsername,
+        password: enryptedPassword,
       })
     })
       .then((response) => response.json())
@@ -63,4 +80,10 @@ async function auth(username, password, errorBoxRef) {
   })
   .then((response) => setAuthKey(response.json()))
 }*/
+function encrypt(text,publicKey) {
+  const encrypt = new JSEncrypt();
+  encrypt.setPublicKey(publicKey);
+  const encrypted = encrypt.encrypt(text);
+  return encrypted;
+}
 export default connect()(Login);

@@ -2,7 +2,7 @@
 import { useState, useRef } from 'react'
 import './register.css'
 
-var apiServerWeba = "https://blogapibackend.herokuapp.com"
+//var apiServerWeba = "https://blogapibackend.herokuapp.com"
 var apiServerWeb = "http://localhost:9000"
 //zrezygnuj z sesji, zachowuj id ciastka, klucz bezpieczenstwa i dane niech beda w bazie danych
 // najpierw sprobuj to https://cloud.google.com/nodejs/getting-started/session-handling-with-firestore
