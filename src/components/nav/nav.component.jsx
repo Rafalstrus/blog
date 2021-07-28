@@ -1,16 +1,19 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import './nav.styles.css'
 import { Link } from "react-router-dom"
 
 import Cookies from 'universal-cookie';
 
-import store from '../../store.js';
+import { connect } from 'react-redux'
+import actions from '../../redux-store/duck/actions'
+import { ReactReduxContext } from 'react-redux'
 
 const cookies = new Cookies();
 
-export const Navigation = props => {
-    const state = store.getState();
-    const authToken = state.token;
+ const Navigation = ({setToken}) => {
+    const { store } = useContext(ReactReduxContext)
+    const authToken = store.getState().token;
+    
     console.log('%c Oh my heavens! ', 'background: #222; color: #bada55;cursor: pointer;')
     //here add if authToken is not null render login/register, ese render logout
     return (
@@ -22,7 +25,7 @@ export const Navigation = props => {
                         to=""
                         id="goToLogout"
                         className="nav-elements"
-                        onClick={() => { Logout() }}
+                        onClick={() => { Logout(authToken,setToken) }}
                     >Logout</Link>
                     :
                     (
@@ -53,7 +56,15 @@ export const Navigation = props => {
         </div>
     )
 }
-function Logout() {
+function Logout(authToken,setToken) {
     cookies.remove("token")
+    setToken(cookies.get("token"))
+
+    console.log(cookies.get("token"))
     //here destroy cookie, and destroy redux store value
 }
+const mapDispatchToProps = dispatch => ({
+    setToken: (token) => dispatch(actions.setToken(token))
+  })
+  
+export default connect(null, mapDispatchToProps)(Navigation)

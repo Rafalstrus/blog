@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navigation } from './components/nav/nav.component'
+import Navigation from './components/nav/nav.component'
 import Login from './components/login/login'
 import Main from './components/main/main'
 import AddPost from './components/add-Post/add-Post';
