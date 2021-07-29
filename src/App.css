@@ -66,3 +66,6 @@ input:invalid {
 input:invalid:focus {
   background-image: white;
 }
+textarea {
+  resize: none;
+}

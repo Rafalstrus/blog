@@ -1,0 +1,20 @@
+.Add-Post{
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+}
+#post-text{
+    width: 48%;
+    margin-left: 1%;
+    margin-top: 5px;
+}
+#post-preview{
+    background-color: aqua;
+    width: 48%;
+    margin-left: 1.5%;
+    margin-top: 5px;
+    height: 100px;
+}
+#upload-image-button{
+    margin-left: 15px;
+}

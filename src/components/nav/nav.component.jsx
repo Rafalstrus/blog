@@ -60,7 +60,6 @@ function Logout(authToken,setToken) {
     cookies.remove("token")
     setToken(cookies.get("token"))
 
-    console.log(cookies.get("token"))
     //here destroy cookie, and destroy redux store value
 }
 const mapDispatchToProps = dispatch => ({
