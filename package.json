@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "history": "^5.0.0",
+    "html-react-parser": "^1.2.7",
     "immer": "^9.0.5",
     "js-cookie": "^2.2.1",
     "jsencrypt": "^3.2.0",

@@ -1,6 +1,7 @@
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
 import React, { useState } from 'react';
 import Cookies from 'universal-cookie';
+import parse from 'html-react-parser';
 import './add-Post.styles.css'
 
 import store from '../../store.js';
@@ -10,20 +11,29 @@ const cookies = new Cookies();
 function AddPost() {
     const state = store.getState();
     const authToken = state.token;
+    const [postHtml, setPostHtml] = useState("text")
     const [file, setFile] = useState("")
+
     return (
         <div className="Add-Post">
             <textarea
+                onChange={(e) => {
+                    setPostHtml(e.target.value)
+                }}
                 id="post-text">
             </textarea>
             <div
                 id="post-preview">
+                {
+                    parse(postHtml) // eslint-disable-line
+                }
+
             </div>
             <div id="upload-images-container">
                 <input
                     type="file"
                     id="fileItem"
-                    onChange={(e)=>handleFile(e)}
+                    onChange={(e) => handleFile(e, setFile)}
                 />
                 <img src={file} alt="" />
                 <button
@@ -54,9 +64,10 @@ async function sendPostToApi(authToken) {
     })
         .then((response) => (response.json()))
 }
-function handleFile(event) {
-    console.log(event)
-    console.log(document.getElementById('fileItem').files[0])
+function handleFile(event, setFile) {
+    setFile(document.getElementById('fileItem').files[0])
 }
+
+
 export default AddPost;
 

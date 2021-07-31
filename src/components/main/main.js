@@ -1,20 +1,17 @@
-import { connect } from 'react-redux'
-import actions from '../../redux-store/duck/actions'
+import store from '../../store.js';
 
-function Main({setPosts}) {
+function Main() {
+    const state = store.getState();
+    const posts = state.posts
     return (
         <div className="Main">
-            <p>works</p>
-            {console.log('bb')}
-            <button onClick={() => {
-                setPosts("a")
-            }}>bb</button>
+            {posts.map(()=>{
+                return true
+            })}
+            <p>here be posts</p>
         </div>
     );
 }
 
-const mapDispatchToProps = dispatch => ({
-    setPosts: (post) => dispatch(actions.setPosts(post))
-  })
 
-export default connect(null, mapDispatchToProps)(Main);
+export default Main;

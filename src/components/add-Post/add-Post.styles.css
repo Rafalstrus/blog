@@ -9,11 +9,12 @@
     margin-top: 5px;
 }
 #post-preview{
-    background-color: aqua;
+    background-color: white;
+    border: solid black;
     width: 48%;
     margin-left: 1.5%;
     margin-top: 5px;
-    height: 100px;
+    min-height: 100px;
 }
 #upload-image-button{
     margin-left: 15px;
