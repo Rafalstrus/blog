@@ -1,16 +1,9 @@
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
 import React, { useState } from 'react';
-import Cookies from 'universal-cookie';
 import parse from 'html-react-parser';
 import './add-Post.styles.css'
 
-import store from '../../store.js';
-
-const cookies = new Cookies();
-
 function AddPost() {
-    const state = store.getState();
-    const authToken = state.token;
     const [postHtml, setPostHtml] = useState("text")
     const [file, setFile] = useState("")
 
@@ -47,23 +40,12 @@ function AddPost() {
             <button
                 id="send-post-button"
                 onClick={() => {
-                    sendPostToApi(authToken)
-
+                    //send post
                 }}>Add Post</button>
         </div>
     );
 }
-async function sendPostToApi(authToken) {
-    fetch(`http://localhost:9000/api-connection/post-create`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-            token: authToken
-        })
-    })
-        .then((response) => (response.json()))
-}
+
 function handleFile(event, setFile) {
     setFile(document.getElementById('fileItem').files[0])
 }
