@@ -6,7 +6,9 @@ const mapStateToProps = (state :any) => ({
 });
 
 const mapDispatchToProps = (dispatch :any) => ({
-    setAuthKey: (key :any)=> dispatch(ACTIONS.setAuthKey(key))
+    setAuthKey: (key :any)=> dispatch(ACTIONS.setAuthKey(key)),
+    setPosts: (posts :any)=> dispatch(ACTIONS.setPosts(posts)),
+    setPage: (page :number)=>dispatch(ACTIONS.setPage(page))
 });
 
 export {

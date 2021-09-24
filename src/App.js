@@ -8,7 +8,9 @@ import Register from './components/register/register';
 
 
 //in redux-store add action to get cookie value from outside (login)
-
+/*
+  TODO: update material ui to mui
+*/
 function App() {
   return (
     <div className="App">

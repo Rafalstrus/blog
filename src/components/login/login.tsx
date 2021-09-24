@@ -15,6 +15,7 @@ var apiServerWeb = "http://localhost:9000"
 //sprobuj res cookie
 //https://stackoverflow.com/questions/36897364/trying-to-get-then-send-a-cookie-using-react-and-fetch
 //https://stackoverflow.com/questions/29425070/is-it-possible-to-get-an-express-session-by-sessionid
+// TODO: here need to add optional login by google 
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")

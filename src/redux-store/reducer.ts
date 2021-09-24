@@ -1,11 +1,15 @@
 import ACTIONS from "./action";
 
 interface DefaultState {
-    authKey: any
+    authKey: any,
+    posts : any,
+    page : number
 }
 
 const defaultState: DefaultState = {
-    authKey: ""
+    authKey: "",
+    posts : {},
+    page: 0
 };
 
 const Reducer = (state = defaultState, action: any) => {
@@ -14,6 +18,18 @@ const Reducer = (state = defaultState, action: any) => {
             return {
                 ...state,
                 authKey: action.authKey
+            }
+        }
+        case ACTIONS.Types.SET_POSTS: {
+            return{
+                ...state,
+                posts: action.posts
+            }
+        }
+        case ACTIONS.Types.SET_PAGE: {
+            return{
+                ...state,
+                page: action.page
             }
         }
         default:

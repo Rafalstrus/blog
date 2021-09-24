@@ -1,7 +1,8 @@
 //https://www.nafrontendzie.pl/routing-reactjs-wprowadzenie-react-router
 import React, { useState } from 'react';
-import parse from 'html-react-parser';
 import './add-Post.styles.css'
+
+//TODO: change one textfield to buttons which be adding elements (default title,description)
 
 function AddPost() {
     const [postHtml, setPostHtml] = useState("text")
@@ -17,10 +18,6 @@ function AddPost() {
             </textarea>
             <div
                 id="post-preview">
-                {
-                    parse(postHtml) // eslint-disable-line
-                }
-
             </div>
             <div id="upload-images-container">
                 <input
@@ -35,6 +32,9 @@ function AddPost() {
                 >Upload image</button>
                 <div id="images-list">
 
+                </div>
+                <div>
+                    <img alt="" id="image-preview"></img>
                 </div>
             </div>
             <button

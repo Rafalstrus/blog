@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import './register.css'
 
-import JSEncrypt from 'jsencrypt';
+import {encrypt} from '../../crypt';
 
 //var apiServerWeba = "https://blogapibackend.herokuapp.com"
 var apiServerWeb = "http://localhost:9000"
@@ -69,10 +69,5 @@ async function register(username, password, errorBoxRef,publicKey) {
     errorBoxRef.current.innerText = "Username/Passwords must contain at least 5/8 letters"
   }
 }
-function encrypt(text, publicKey) {
-  const encrypt = new JSEncrypt();
-  encrypt.setPublicKey(publicKey);
-  const encrypted = encrypt.encrypt(text);
-  return encrypted;
-}
+
 export default Register;

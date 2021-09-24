@@ -3,7 +3,7 @@
   text-align: center;
   padding-bottom: 5px;
   background-color: rgba(250,250,250,0.9);
-  max-width: 1440px;
+  /* max-width: 1440px; */
 }
 body{
   background: linear-gradient(#f1cdcd, #b6bee6);

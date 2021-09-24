@@ -1,5 +1,6 @@
 import Cookies from 'universal-cookie';
-import JSEncrypt from 'jsencrypt';
+
+import {encrypt} from './crypt';
 
 const cookies = new Cookies();
 
@@ -56,11 +57,16 @@ function Logout(authToken :any) {
     cookies.remove("token")
     //here destroy cookie, and destroy redux store value
 }
-function encrypt(text: string, publicKey: any) {
-    const encrypt = new JSEncrypt({});
-    encrypt.setPublicKey(publicKey);
-    const encrypted = encrypt.encrypt(text);
-    return encrypted;
-  }
+function getPosts(page :number){
+    return [
+        {
+
+        },
+        {
+
+        }
+    ]
+}
+
 
 
