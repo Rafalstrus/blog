@@ -3,18 +3,22 @@ import './register.css'
 
 import {encrypt} from '../../crypt';
 
+import { TextField } from '@mui/material';
+
+import {fetchAuthKey} from '../../fetches';
+
 //var apiServerWeba = "https://blogapibackend.herokuapp.com"
 var apiServerWeb = "http://localhost:9000"
 
 function Register() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [publicKey, setPublicKey] = useState("")
-  const errorBoxRef = useRef()
+  const [publicKey, setPublicKey] = useState<any>("")
+  const errorBoxRef = useRef<HTMLParagraphElement>(null)
   useEffect(() => {
     async function fetchData() {
-      var x = await fetch('http://localhost:9000/api-connection/public-key-get')
-      return x.text()
+      var x = await fetchAuthKey()
+      return x
     }
     async function getData() {
       setPublicKey(await fetchData())
@@ -25,19 +29,17 @@ function Register() {
     <div className="Register">
       <h2>REGISTER</h2>
       <p>Username</p>
-      <input
-        minLength="5"
+      <TextField
         onChange={(e) => {
           setUsername(e.target.value)
-        }}></input>
+        }}></TextField>
       <p>Password</p>
-      <input
+      <TextField
         id="password-Input"
-        minLength="8"
         type="password"
         onChange={(e) => {
           setPassword(e.target.value)
-        }}></input>
+        }}></TextField>
       <button onClick={() => {
         register(username, password, errorBoxRef,publicKey)
       }
@@ -50,7 +52,7 @@ function Register() {
     </div>
   );
 }
-async function register(username, password, errorBoxRef,publicKey) {
+async function register(username :string, password :string, errorBoxRef :any,publicKey :any) {
   if (username.length >= 5 && password.length >= 8) {
     var enryptedUsername = encrypt(username, publicKey)
     var enryptedPassword = encrypt(password, publicKey)

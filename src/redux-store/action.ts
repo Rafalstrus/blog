@@ -1,5 +1,7 @@
 const Types = {
-    SET_AUTH_KEY: "SET_AUTH_KEY"
+    SET_AUTH_KEY: "SET_AUTH_KEY",
+    SET_POSTS: "SET_POSTS",
+    SET_PAGE: "SET_PAGE"
 };
 // actions
 const setAuthKey = (key: any) => ({
@@ -16,7 +18,7 @@ const setPage = (page :number) => ({
 })
 const exportedObject = {
     setAuthKey,
-    getPosts,
+    setPosts,
     setPage,
     Types
 }

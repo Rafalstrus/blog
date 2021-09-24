@@ -1,10 +1,14 @@
-const Post = ({data} :any) => {
+import { Button } from "@mui/material/"
+
+import parse from 'html-react-parser';
+
+export const Post = ({data} :any) => {
 
     return(
         <div>
-            <p>{/* name of post */}</p>
-            <img alt="">{/* img of post */}</img>
-            <p>{/* description */}</p>
+            {data.map((element : any)=>{
+                return parse(element)
+            })}
             <Button>{/* like */}</Button>
             <Button>{/* dislike */}</Button>
             <Button>{/* comment */}</Button>

@@ -2,14 +2,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { TextField, Grid } from '@material-ui/core'
+import { TextField, Grid } from '@mui/material/'
 
-
+import {fetchAuthKey} from '../../fetches';
 
 import { mapStateToProps, mapDispatchToProps } from '../../redux-store/operation'
 
 //var apiServerWeba = "https://blogapibackend.herokuapp.com"
-var apiServerWeb = "http://localhost:9000"
+//var apiServerWeb = "http://localhost:9000"
 //zrezygnuj z sesji, zachowuj id ciastka, klucz bezpieczenstwa i dane niech beda w bazie danych
 // najpierw sprobuj to https://cloud.google.com/nodejs/getting-started/session-handling-with-firestore
 //sprobuj res cookie
@@ -19,17 +19,17 @@ var apiServerWeb = "http://localhost:9000"
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [publicKey, setPublicKey] = useState("")
+  const [publicKey, setPublicKey] = useState<any>("")
   const errorBoxRef = useRef<HTMLParagraphElement>(null)
   useEffect(() => {
     async function fetchData() {
-      var x = await fetch('http://localhost:9000/api-connection/public-key-get')
-      return x.text()
+      var x = await fetchAuthKey()
+      return x
     }
     async function getData() {
       setPublicKey(await fetchData())
     }
-    getData()
+    getData()// eslint-disable-next-line
   }, [])
   return (
     <div className="Login">
