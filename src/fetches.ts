@@ -53,6 +53,19 @@ export function getPosts(page :number){
         }
     ]
 }
+export async function setLikeOrDisLike(authToken :any, operation : any, postId :number){
+    await fetch('https::/localhost:3000' + `/api-connection/set-like`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+            authToken: authToken,
+            operation: operation,
+            postId: postId
+        })
+    })
+        .then((response) => response.json())
+}
 
 
 
